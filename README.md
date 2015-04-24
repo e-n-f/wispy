@@ -1,6 +1,11 @@
 wispy maps
 ==========
 
+As in https://www.flickr.com/photos/walkingsf/sets/72157628616533659
+
+Cartogram tool
+--------------
+
 Requires the "cart" cartogram tool with my slight modifications
 at https://github.com/ericfischer/cart
 
@@ -36,7 +41,7 @@ Making the cartogram
 
 Then make a cartogram, using the "1000 1000" part as the bounds:
 
-   ../cart/cart 1000 1000 density density.out
+    ../cart/cart 1000 1000 density density.out
 
 Making the image
 ----------------
