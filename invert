@@ -1,0 +1,39 @@
+#!/bin/sh
+
+height=$1
+width=$2
+minlat=$3
+minlon=$4
+maxlat=$5
+maxlon=$6
+
+case "$maxlon" in
+	"")
+		echo "Usage: $0 height width minlat minlon maxlat maxlon" >&2
+		exit 1;
+	;;
+esac
+
+#cat ../rand3.geo |
+#../limit-specified-geo ../bounds/7 |
+#awk '($8 > 5280 * 5)'  |
+
+tr ',' ' ' | awk 'BEGIN {
+	minlat = '$minlat';
+	minlon = '$minlon';
+	maxlat = '$maxlat';
+	maxlon = '$maxlon';
+	width = '$width';
+	height = '$height';
+}
+{
+        kind = 0;
+        if (/\//) {
+                kind = 1;
+        }
+
+	print ($3 - minlon) * width / (maxlon - minlon), ($2 - minlat) * height / (maxlat - minlat), $10, kind;
+	print ($6 - minlon) * width / (maxlon - minlon), ($5 - minlat) * height / (maxlat - minlat), $10;
+	print "end";
+}'
+
